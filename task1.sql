@@ -14,9 +14,10 @@ HAVING COUNT(card.id) > 2
 
 3. Вывести список клиентов, у которых есть и карта Visa (cardnumber начинается на «4»), и карта Mastercard (cardnumber начинается на «5»);
 
-SELECT client.fio FROM 
-
+SELECT client.fio FROM client
+JOIN card ON client.id = card.client_id
 WHERE card.cardnumber LIKE '4%' AND '5%'
+GROUP BY client.fio
 
 4. Вывести список клиентов, фамилия которых начинается на «П» и заканчивается на «В»;
 
